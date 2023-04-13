@@ -28,15 +28,15 @@ class _OnboardingScreenState extends State<OnboardingScreen>
   void initState() {
     position = PositionPage.pageFirst;
     animationController = AnimationController(
-        vsync: this, duration: const Duration(milliseconds: 600));
+        vsync: this, duration: const Duration(milliseconds: 400));
 
-    animationMoveIn = Tween(begin: 0.0, end: 1.0).animate(CurvedAnimation(
+    animationMoveIn = Tween(begin: 1.0, end: 0.0).animate(CurvedAnimation(
         parent: animationController,
-        curve: const Interval(0.0, 0.45, curve: Curves.easeOut)));
+        curve: const Interval(0.6, 1.0, curve: Curves.easeOut)));
 
-    animationMoveOut = Tween(begin: 1.0, end: 0.0).animate(CurvedAnimation(
+    animationMoveOut = Tween(begin: 0.0, end: 1.0).animate(CurvedAnimation(
         parent: animationController,
-        curve: const Interval(0.55, 1.0, curve: Curves.easeOut)));
+        curve: const Interval(0.0, 0.4, curve: Curves.easeOut)));
 
     super.initState();
   }
@@ -55,13 +55,6 @@ class _OnboardingScreenState extends State<OnboardingScreen>
         position = PositionPage.pageSecond;
         animationController.reset();
         break;
-
-      // case PositionPage.pageSecond:
-      //       position = PositionPage.moveCity;
-      //       await animationController.forward();
-      //       position = PositionPage.city;
-      //       animationController.reset();
-      //   break;
     }
     setState(() {});
   }
@@ -73,9 +66,6 @@ class _OnboardingScreenState extends State<OnboardingScreen>
     if (position == PositionPage.moveToSecond) {
       return -screenWidth * animationMoveOut.value;
     }
-    if (position == PositionPage.pageSecond) {
-      return -screenWidth * animationMoveIn.value;
-    }
     return -screenWidth;
   }
 
@@ -86,10 +76,7 @@ class _OnboardingScreenState extends State<OnboardingScreen>
     if (position == PositionPage.moveToSecond) {
       return screenWidth * animationMoveIn.value;
     }
-    if (position == PositionPage.pageSecond) {
-      return 0;
-    }
-    return -screenWidth;
+    return 0;
   }
 
   @override
@@ -117,9 +104,9 @@ class _OnboardingScreenState extends State<OnboardingScreen>
                     top: 0,
                     left: positionPageSecond(screenWidth),
                     child: const _Content(
-                      title: 'Находка для тех, кто много сидит',
+                      title: 'Простое упражнение',
                       body:
-                          'Ученые нашли упражнение, позволяющее худеть, сидя по 10 часов в день. Во время испытаний была отмечена удвоенная скорость метаболизма жиров в организме',
+                          'Минимум времени - максимум пользы.\nLazy Fit покажет как делать и учтет когда вам удобно заниматься.',
                     ),
                   ),
                   Align(
