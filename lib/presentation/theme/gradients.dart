@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 
 class Gradients {
@@ -11,5 +13,14 @@ class Gradients {
       Color(0XFF120038),
     ],
     stops: [0, 0.4, 0.6, 1],
+  );
+
+  static const rarialButtonGradient = RadialGradient(
+    colors: [
+      Color(0X40A06CB9),
+      Colors.transparent,
+    ],
+    radius: 0.8,
+    stops: [0.2, 1],
   );
 }
