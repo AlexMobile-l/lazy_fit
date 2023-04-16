@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:lazy_fit/presentation/common_widgets/buttons/small_next_button.dart';
+import 'package:lazy_fit/presentation/common_widgets/buttons/button_medium.dart';
+import 'package:lazy_fit/presentation/common_widgets/buttons/button_small.dart';
 import 'package:lazy_fit/presentation/theme/gradients.dart';
 import 'package:lazy_fit/presentation/theme/theme_text_style.dart';
+import 'package:lazy_fit/states/splash_state.dart';
+import 'package:provider/provider.dart';
 
 enum PositionPage {
   pageFirst,
@@ -95,7 +98,7 @@ class _OnboardingScreenState extends State<OnboardingScreen>
                     top: 0,
                     left: positionPageFirst(screenWidth),
                     child: const _Content(
-                      title: 'Находка для тех, кто много сидит',
+                      title: 'Находка для тех,\nкто много сидит',
                       body:
                           'Ученые нашли упражнение, позволяющее худеть, сидя по 10 часов в день.\nВо время испытаний была отмечена удвоенная скорость метаболизма жиров в организме',
                     ),
@@ -112,9 +115,18 @@ class _OnboardingScreenState extends State<OnboardingScreen>
                   Align(
                     alignment: Alignment.bottomRight,
                     child: Container(
-                        margin: const EdgeInsets.only(right: 20, bottom: 30),
-                        child: GestureDetector(
-                            onTap: move, child: const SmallNextButton())),
+                      margin: const EdgeInsets.only(right: 20, bottom: 30),
+                      child: GestureDetector(
+                        onTap: position != PositionPage.pageSecond
+                            ? move
+                            : context.read<SplashState>().setFirstEntry,
+                        child: position != PositionPage.pageSecond
+                            ? const ButtonSmall(
+                                arrowRightVisibility: true,
+                              )
+                            : const ButtonMedium('Поехали'),
+                      ),
+                    ),
                   )
                 ]);
               }),
@@ -144,13 +156,13 @@ class _Content extends StatelessWidget {
             padding: const EdgeInsets.only(top: 40),
             child: Text(
               title,
-              style: ThemeTextStyle.s14w600.copyWith(color: Colors.white),
+              style: ThemeTextStyle.s30w600.copyWith(color: Colors.white),
               textAlign: TextAlign.center,
             ),
           ),
           Text(
             body,
-            style: ThemeTextStyle.s14w600.copyWith(color: Colors.white),
+            style: ThemeTextStyle.s22w600.copyWith(color: Colors.white),
             textAlign: TextAlign.center,
           ),
           const SizedBox(),

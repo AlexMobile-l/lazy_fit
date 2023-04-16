@@ -10,5 +10,10 @@ class SplashState extends ChangeNotifier {
   void init() async {
     _prefs = await SharedPreferences.getInstance();
   }
-  // final
+
+  void setFirstEntry() {
+    firstEntry = false;
+    notifyListeners();
+    print('firstEntry = $firstEntry');
+  }
 }
