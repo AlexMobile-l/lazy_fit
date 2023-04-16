@@ -10,8 +10,6 @@ class CustomNavigationBar extends StatelessWidget {
       alignment: Alignment.bottomCenter,
       child: Container(
         width: double.infinity,
-        // height: 70,
-        // color: Colors.grey.withOpacity(0.3),
         padding: const EdgeInsets.symmetric(horizontal: 10),
         child:
             Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
