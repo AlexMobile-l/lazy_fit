@@ -19,6 +19,12 @@ class ThemeTextStyle {
         fontWeight: FontWeight.w600,
       );
 
+  static TextStyle get s18w600 => TextStyle(
+        fontFamily: fontFamily,
+        fontSize: _getFontSize(18),
+        fontWeight: FontWeight.w600,
+      );
+
   static TextStyle get s14w600 => TextStyle(
         fontFamily: fontFamily,
         fontSize: _getFontSize(14),

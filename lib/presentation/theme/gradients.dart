@@ -23,4 +23,14 @@ class Gradients {
     radius: 0.8,
     stops: [0.2, 1],
   );
+  static const rarialMainGradient = RadialGradient(
+    colors: [
+      Color(0XB3FFE7C3),
+      Color(0X70FFE7C3),
+      Colors.transparent,
+    ],
+    radius: 1.5,
+    stops: [0, 0.3, 1],
+    center: Alignment(0, -0.4),
+  );
 }
