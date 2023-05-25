@@ -109,14 +109,13 @@ class _OnboardingScreenState extends State<OnboardingScreen>
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
-    final screenHeight = (MediaQuery.of(context).size.height);
     return Material(
       child: Container(
         decoration: const BoxDecoration(gradient: Gradients.mainBGGradient),
         child: Stack(
           children: [
             Container(
-              padding: EdgeInsets.only(bottom: 300),
+              padding: const EdgeInsets.only(bottom: 300),
               decoration:
                   const BoxDecoration(gradient: Gradients.rarialMainGradient),
             ),

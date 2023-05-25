@@ -5,6 +5,8 @@ import 'package:lazy_fit/states/splash_state.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'routes/router_config.dart';
+
 late SharedPreferences sharedPreferences;
 
 void main() async {
@@ -22,6 +24,8 @@ void main() async {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
+  get _router => Routes.router;
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -30,7 +34,7 @@ class MyApp extends StatelessWidget {
           ChangeNotifierProvider<SplashState>(
               create: (context) => SplashState()),
         ],
-        child: const SplashScreen(),
+        child: MaterialApp.router(routerConfig: _router),
       ),
     );
   }

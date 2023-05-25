@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:lazy_fit/presentation/theme/gradients.dart';
 
 class CustomNavigationBar extends StatelessWidget {
@@ -14,7 +15,9 @@ class CustomNavigationBar extends StatelessWidget {
         child:
             Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
           GestureDetector(
-            onTap: () {},
+            onTap: () {
+              context.go('/schedule');
+            },
             child: Container(
               width: 70,
               height: 70,
