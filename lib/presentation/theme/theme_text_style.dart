@@ -13,6 +13,12 @@ class ThemeTextStyle {
         fontWeight: FontWeight.w600,
       );
 
+  static TextStyle get s24w400 => TextStyle(
+        fontFamily: fontFamily,
+        fontSize: _getFontSize(24),
+        fontWeight: FontWeight.w400,
+      );
+
   static TextStyle get s22w600 => TextStyle(
         fontFamily: fontFamily,
         fontSize: _getFontSize(22),
@@ -23,6 +29,12 @@ class ThemeTextStyle {
         fontFamily: fontFamily,
         fontSize: _getFontSize(18),
         fontWeight: FontWeight.w600,
+      );
+
+  static TextStyle get s16w400 => TextStyle(
+        fontFamily: fontFamily,
+        fontSize: _getFontSize(16),
+        fontWeight: FontWeight.w400,
       );
 
   static TextStyle get s14w600 => TextStyle(
