@@ -9,7 +9,8 @@ class SplashScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    bool firstEntry = context.watch<SplashState>().firstEntry;
-    return firstEntry ? const OnboardingScreen() : const MainScreen();
+    return context.watch<SplashState>().wasFirstEntryInApp()
+        ? const MainScreen()
+        : const OnboardingScreen();
   }
 }

@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
 
+import '../main.dart';
+
 class SplashState extends ChangeNotifier {
-  bool firstEntry = true;
+  static const _keyFirstEntry = "SplashState._keyFirstEntry";
+  bool wasFirstEntryInApp() =>
+      sharedPreferences.getBool(_keyFirstEntry) ?? false;
+
   SplashState();
 
   void setFirstEntry() {
-    firstEntry = false;
+    sharedPreferences.setBool(_keyFirstEntry, true);
     notifyListeners();
-    print('firstEntry = $firstEntry');
   }
 }

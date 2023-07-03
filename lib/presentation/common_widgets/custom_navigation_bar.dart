@@ -16,7 +16,7 @@ class CustomNavigationBar extends StatelessWidget {
             Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
           GestureDetector(
             onTap: () {
-              context.go('/schedule');
+              context.push('/schedule');
             },
             child: Container(
               width: 70,

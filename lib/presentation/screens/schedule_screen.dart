@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lazy_fit/presentation/common_widgets/change_time.dart';
 
 import '../common_widgets/custom_navigation_bar.dart';
 import '../common_widgets/header.dart';
@@ -13,9 +14,11 @@ class ScheduleScreen extends StatelessWidget {
       child: Container(
         decoration: const BoxDecoration(gradient: Gradients.mainBGGradient),
         child: SafeArea(
-          child: Stack(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Header(),
+              Header(title: 'Schedule', backButton: true),
+              ChangeTime(),
               CustomNavigationBar(),
             ],
           ),
