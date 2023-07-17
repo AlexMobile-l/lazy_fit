@@ -3,7 +3,10 @@ import 'package:lazy_fit/presentation/common_widgets/custom_navigation_bar.dart'
 import 'package:lazy_fit/presentation/common_widgets/foot.dart';
 import 'package:lazy_fit/presentation/common_widgets/header.dart';
 import 'package:lazy_fit/presentation/theme/gradients.dart';
+import 'package:lazy_fit/states/main_state.dart';
 import 'package:lazy_fit/states/splash_state.dart';
+import 'package:provider/provider.dart';
+import 'package:video_player/video_player.dart';
 
 import '../common_widgets/play_widget.dart';
 
@@ -12,17 +15,22 @@ class MainScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final VideoPlayerController videoPlayerController =
+        VideoPlayerController.asset('assets/foot_video.mp4');
+    // videoPlayerController.initialize();
+    // context.read<MainState>().setController(videoPlayerController);
+
     return Material(
       child: Container(
         decoration: const BoxDecoration(gradient: Gradients.mainBGGradient),
-        child: const SafeArea(
+        child: SafeArea(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Header(title: 'Lazy Fit', backButton: false),
-              Foot(),
-              PlayWidget(),
-              CustomNavigationBar(),
+              const Header(title: 'Lazy Fit', backButtonEnabled: false),
+              Foot(videoPlayerController),
+              const PlayWidget(),
+              const CustomNavigationBar(),
             ],
           ),
         ),

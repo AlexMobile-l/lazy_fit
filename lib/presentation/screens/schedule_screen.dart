@@ -17,7 +17,7 @@ class ScheduleScreen extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Header(title: 'Schedule', backButton: true),
+              Header(title: 'Schedule', backButtonEnabled: true),
               ChangeTime(),
               CustomNavigationBar(),
             ],

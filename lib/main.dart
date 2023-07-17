@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:lazy_fit/presentation/screens/splash_screen.dart';
+import 'package:lazy_fit/states/main_state.dart';
 import 'package:lazy_fit/states/schedule_state.dart';
 import 'package:lazy_fit/states/splash_state.dart';
 import 'package:provider/provider.dart';
@@ -36,6 +36,7 @@ class MyApp extends StatelessWidget {
               create: (context) => SplashState()),
           ChangeNotifierProvider<ScheduleState>(
               create: (context) => ScheduleState()),
+          ChangeNotifierProvider<MainState>(create: (context) => MainState()),
         ],
         child: MaterialApp.router(routerConfig: _router),
       ),

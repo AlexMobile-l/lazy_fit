@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class ThemeTextStyle {
-  static const fontFamily = "Roboto";
+  static const fontFamily = "Fredoka";
 
   static double _getFontSize(double fontSize) {
     return fontSize;

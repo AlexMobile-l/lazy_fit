@@ -4,8 +4,12 @@ import 'package:lazy_fit/presentation/theme/theme_text_style.dart';
 
 class Header extends StatelessWidget {
   final String title;
-  final bool backButton;
-  const Header({required this.title, required this.backButton, super.key});
+  final bool backButtonEnabled;
+  const Header({
+    required this.title,
+    required this.backButtonEnabled,
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +25,7 @@ class Header extends StatelessWidget {
               child: SizedBox(
                 width: 24,
                 height: 24,
-                child: backButton
+                child: backButtonEnabled
                     ? Image.asset('assets/icons/arrow_left.png')
                     : const SizedBox.shrink(),
               ),
