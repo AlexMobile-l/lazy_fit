@@ -15,10 +15,8 @@ class MainScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final VideoPlayerController videoPlayerController =
+    final videoPlayerController =
         VideoPlayerController.asset('assets/foot_video.mp4');
-    // videoPlayerController.initialize();
-    // context.read<MainState>().setController(videoPlayerController);
 
     return Material(
       child: Container(
@@ -28,7 +26,14 @@ class MainScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               const Header(title: 'Lazy Fit', backButtonEnabled: false),
-              Foot(videoPlayerController),
+              FutureBuilder(
+                  future: context
+                      .read<MainState>()
+                      .setController(videoPlayerController),
+                  builder: (context, snapshot) {
+                    if (!snapshot.hasData) return Container();
+                    return Foot(videoPlayerController);
+                  }),
               const PlayWidget(),
               const CustomNavigationBar(),
             ],

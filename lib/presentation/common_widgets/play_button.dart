@@ -13,7 +13,7 @@ class PlayButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        // context.read<MainState>().setPlayVideo();
+        context.read<MainState>().setPlayVideo();
       },
       child: Container(
         width: 125,

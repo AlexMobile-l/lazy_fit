@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:lazy_fit/presentation/theme/gradients.dart';
 import 'package:lazy_fit/presentation/theme/theme_color.dart';
+import 'package:lazy_fit/presentation/theme/theme_text_style.dart';
+import 'package:lazy_fit/states/schedule_state.dart';
+import 'package:provider/provider.dart';
 
 class ChangeTime extends StatelessWidget {
   const ChangeTime({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
+    return const Padding(
       padding: EdgeInsets.symmetric(horizontal: 25),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -28,15 +32,81 @@ class ChengeHours extends StatefulWidget {
 }
 
 class _ChengeHoursState extends State<ChengeHours> {
+  late PageController pageController;
+  final scale = 100;
+  final List<int> _hours = ScheduleState.hours;
+
+  @override
+  void initState() {
+    super.initState();
+    pageController = PageController(
+        initialPage: _hours.length * scale, viewportFraction: 0.33);
+  }
+
+  @override
+  void dispose() {
+    pageController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
-    return Container(
+
+    return SizedBox(
       width: screenWidth * 0.35,
       height: screenWidth * 0.5,
+      child: Stack(
+        children: [
+          PageView.builder(
+            physics: const BouncingScrollPhysics(),
+            scrollDirection: Axis.vertical,
+            controller: pageController,
+            onPageChanged: (value) => print(value),
+            itemBuilder: (context, infiniteIndex) {
+              print('infiniteIndex $infiniteIndex');
+              final index = infiniteIndex % _hours.length;
+              print('index $index');
+              return _Hour(index);
+            },
+            // itemCount: _hours.length * scale,
+          ),
+          IgnorePointer(
+            child: Container(
+              decoration: BoxDecoration(
+                border: Border.all(width: 3, color: ThemeColors.purpleLight),
+                borderRadius: const BorderRadius.all(Radius.circular(20)),
+                gradient: Gradients.timeSelectGradient,
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _Hour extends StatelessWidget {
+  final int index;
+  const _Hour(this.index);
+
+  @override
+  Widget build(BuildContext context) {
+    final item = ScheduleState.hours[index];
+
+    return Container(
       decoration: BoxDecoration(
-        border: Border.all(width: 3, color: ThemeColors.purpleLight),
-        borderRadius: const BorderRadius.all(Radius.circular(20)),
+          // color: Colors.grey.withOpacity(0.5),
+          ),
+      child: Center(
+        child: Text(
+          item.toString(),
+          textAlign: TextAlign.center,
+          style: ThemeTextStyle.s60w600.copyWith(
+            color: Colors.white,
+            height: 1.05,
+          ),
+        ),
       ),
     );
   }

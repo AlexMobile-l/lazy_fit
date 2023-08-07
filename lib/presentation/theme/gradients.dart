@@ -35,6 +35,18 @@ class Gradients {
     stops: [0, 1],
   );
 
+  static const timeSelectGradient = LinearGradient(
+    begin: Alignment.topCenter,
+    end: Alignment.bottomCenter,
+    colors: [
+      Color(0XFF3F005C),
+      Color(0X003F005C),
+      Color(0X003F005C),
+      Color(0XFF3F005C),
+    ],
+    stops: [0.1, 0.35, 0.65, 0.9],
+  );
+
   static const rarialButtonGradient = RadialGradient(
     colors: [
       Color(0X40A06CB9),

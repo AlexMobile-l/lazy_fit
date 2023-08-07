@@ -7,6 +7,30 @@ class ThemeTextStyle {
     return fontSize;
   }
 
+  static TextStyle get s90w600 => TextStyle(
+        fontFamily: fontFamily,
+        fontSize: _getFontSize(90),
+        fontWeight: FontWeight.w600,
+      );
+
+  static TextStyle get s80w600 => TextStyle(
+        fontFamily: fontFamily,
+        fontSize: _getFontSize(80),
+        fontWeight: FontWeight.w600,
+      );
+
+  static TextStyle get s70w600 => TextStyle(
+        fontFamily: fontFamily,
+        fontSize: _getFontSize(70),
+        fontWeight: FontWeight.w600,
+      );
+
+  static TextStyle get s60w600 => TextStyle(
+        fontFamily: fontFamily,
+        fontSize: _getFontSize(60),
+        fontWeight: FontWeight.w600,
+      );
+
   static TextStyle get s30w600 => TextStyle(
         fontFamily: fontFamily,
         fontSize: _getFontSize(30),

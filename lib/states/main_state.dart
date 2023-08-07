@@ -6,14 +6,11 @@ class MainState extends ChangeNotifier {
 
   bool playVideo = false;
 
-  MainState() {
-    videoPlayerController.initialize();
-  }
-
-  void setController(VideoPlayerController controller) {
+  Future<bool> setController(VideoPlayerController controller) async {
     videoPlayerController = controller;
+    await videoPlayerController.initialize();
     videoPlayerController.setLooping(true);
-    // videoPlayerController.initialize();
+    return true;
   }
 
   void setPlayVideo() {
