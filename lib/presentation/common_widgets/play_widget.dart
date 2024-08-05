@@ -1,7 +1,5 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
-import 'package:lazy_fit/presentation/common_widgets/play_button.dart';
+import 'package:lazy_fit/presentation/common_widgets/buttons/play_button.dart';
 import 'package:lazy_fit/presentation/theme/theme_text_style.dart';
 
 class PlayWidget extends StatelessWidget {
@@ -9,7 +7,7 @@ class PlayWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var streamController = StreamController<String>();
+    // var streamController = StreamController<String>();
 
     return Container(
       height: 125,

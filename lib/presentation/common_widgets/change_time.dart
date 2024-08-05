@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:lazy_fit/presentation/theme/gradients.dart';
 import 'package:lazy_fit/presentation/theme/theme_color.dart';
 import 'package:lazy_fit/presentation/theme/theme_text_style.dart';
-import 'package:lazy_fit/states/schedule_state.dart';
-import 'package:provider/provider.dart';
+import 'package:lazy_fit/presentation/screens/schedule_screen/schedule_state.dart';
 
 class ChangeTime extends StatelessWidget {
   const ChangeTime({super.key});
@@ -34,7 +33,7 @@ class ChengeHours extends StatefulWidget {
 class _ChengeHoursState extends State<ChengeHours> {
   late PageController pageController;
   final scale = 100;
-  final List<int> _hours = ScheduleState.hours;
+  final _hours = ScheduleState.hours;
 
   @override
   void initState() {
@@ -62,11 +61,11 @@ class _ChengeHoursState extends State<ChengeHours> {
             physics: const BouncingScrollPhysics(),
             scrollDirection: Axis.vertical,
             controller: pageController,
-            onPageChanged: (value) => print(value),
+            onPageChanged: (value) => debugPrint(value.toString()),
             itemBuilder: (context, infiniteIndex) {
-              print('infiniteIndex $infiniteIndex');
+              debugPrint('infiniteIndex $infiniteIndex');
               final index = infiniteIndex % _hours.length;
-              print('index $index');
+              debugPrint('index $index');
               return _Hour(index);
             },
             // itemCount: _hours.length * scale,
@@ -96,8 +95,8 @@ class _Hour extends StatelessWidget {
 
     return Container(
       decoration: BoxDecoration(
-          // color: Colors.grey.withOpacity(0.5),
-          ),
+        color: Colors.grey.withOpacity(0.0),
+      ),
       child: Center(
         child: Text(
           item.toString(),

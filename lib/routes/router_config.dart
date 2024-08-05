@@ -1,33 +1,40 @@
+import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
-import 'package:provider/provider.dart';
+import 'package:lazy_fit/presentation/screens/onboarding_screen/onboarding_screen.dart';
 
-import '../presentation/screens/schedule_screen.dart';
-import '../presentation/screens/splash_screen.dart';
+import '../presentation/screens/main_screen/main_screen.dart';
+import '../presentation/screens/schedule_screen/schedule_screen.dart';
+import '../presentation/screens/splash_screen/splash_state.dart';
 
 class Routes {
   static final router = GoRouter(
-    initialLocation: '/init', // '/settings',
+    initialLocation: mainScreen,
     routes: [
       GoRoute(
-        path: '/init',
-        builder: (context, state) => const SplashScreen(),
+        path: '/main',
+        builder: (context, state) => const MainScreen(),
+        routes: [
+          GoRoute(
+            path: '/schedule',
+            builder: (context, state) => const ScheduleScreen(),
+          ),
+        ],
       ),
       GoRoute(
-        path: '/schedule',
-        builder: (context, state) => const ScheduleScreen(),
+        path: '/onboarding',
+        builder: (context, state) => const OnboardingScreen(),
       ),
     ],
-    // redirect: (context, state) {
-    //   if (state.location != '/auth' &&
-    //       state.location != '/init' &&
-    //       state.location != '/forgotpassword' &&
-    //       // // TODO remove
-    //       // state.location != '/changepassword' &&
-    //       !context.read<AuthState>().logged) {
-    //     return '/auth';
-    //   }
-
-    //   return state.path;
-    // },
+    redirect: (context, state) {
+      final controller = Get.put(SplashState());
+      if (!controller.wasFirstEntryInApp()) {
+        return onboardingScreen;
+      }
+      return null;
+    },
   );
+
+  static String mainScreen = '/main';
+  static String scheduleScreen = '/schedule';
+  static String onboardingScreen = '/onboarding';
 }

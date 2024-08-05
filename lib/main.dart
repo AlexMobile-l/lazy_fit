@@ -1,18 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:lazy_fit/states/main_state.dart';
-import 'package:lazy_fit/states/schedule_state.dart';
-import 'package:lazy_fit/states/splash_state.dart';
-import 'package:provider/provider.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:lazy_fit/repository/storage.dart';
 
 import 'routes/router_config.dart';
 
-late SharedPreferences sharedPreferences;
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  sharedPreferences = await SharedPreferences.getInstance();
+  await Storage.init();
   SystemChrome.setSystemUIOverlayStyle(
     const SystemUiOverlayStyle(statusBarColor: Colors.transparent),
   );
@@ -25,21 +19,8 @@ void main() async {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  get _router => Routes.router;
-
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: MultiProvider(
-        providers: [
-          ChangeNotifierProvider<SplashState>(
-              create: (context) => SplashState()),
-          ChangeNotifierProvider<ScheduleState>(
-              create: (context) => ScheduleState()),
-          ChangeNotifierProvider<MainState>(create: (context) => MainState()),
-        ],
-        child: MaterialApp.router(routerConfig: _router),
-      ),
-    );
+    return MaterialApp.router(routerConfig: Routes.router);
   }
 }
