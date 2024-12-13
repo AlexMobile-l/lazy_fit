@@ -166,7 +166,7 @@ class _OnboardingScreenState extends State<OnboardingScreen>
                                 ? move
                                 : () {
                                     Routes.router.go(Routes.mainScreen);
-                                    Get.find<SplashState>().setFirstEntry;
+                                    Get.find<SplashState>().setFirstEntry();
                                   },
                             child: position != PositionPage.pageThird
                                 ? const ButtonSmall(

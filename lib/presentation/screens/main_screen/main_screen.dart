@@ -28,9 +28,6 @@ class MainScreen extends StatelessWidget {
               const Header(title: 'Lazy Fit', backButtonEnabled: false),
               FutureBuilder(
                   future: mainState.setController(videoPlayerController),
-                  // context
-                  //     .read<MainState>()
-                  //     .setController(videoPlayerController),
                   builder: (context, snapshot) {
                     if (!snapshot.hasData) return Container();
                     return Foot(videoPlayerController);

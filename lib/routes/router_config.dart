@@ -11,17 +11,17 @@ class Routes {
     initialLocation: mainScreen,
     routes: [
       GoRoute(
-        path: '/main',
+        path: mainScreen,
         builder: (context, state) => const MainScreen(),
         routes: [
           GoRoute(
-            path: '/schedule',
+            path: scheduleScreen,
             builder: (context, state) => const ScheduleScreen(),
           ),
         ],
       ),
       GoRoute(
-        path: '/onboarding',
+        path: onboardingScreen,
         builder: (context, state) => const OnboardingScreen(),
       ),
     ],
@@ -34,7 +34,7 @@ class Routes {
     },
   );
 
-  static String mainScreen = '/main';
-  static String scheduleScreen = '/schedule';
-  static String onboardingScreen = '/onboarding';
+  static String mainScreen = '/';
+  static String scheduleScreen = 'schedule';
+  static String onboardingScreen = 'onboarding';
 }
